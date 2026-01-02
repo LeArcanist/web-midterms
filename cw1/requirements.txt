@@ -1,1 +1,2 @@
-pip install django djangorestframework
+django==6.0
+djangorestframework==3.16.1
