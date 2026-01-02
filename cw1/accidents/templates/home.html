@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>CM3035 CW1 – Traffic Accidents API</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; line-height: 1.4; }
+    .card { border: 1px solid #ddd; padding: 16px; border-radius: 10px; margin-bottom: 16px; }
+    code { background: #f6f6f6; padding: 2px 6px; border-radius: 6px; }
+    ul { margin: 8px 0 0; }
+  </style>
+</head>
+<body>
+  <h1>CM3035 CW1 – Traffic Accidents</h1>
+
+  <div class="card">
+    <h2>Environment</h2>
+    <ul>
+      <li>OS: <code>{{ os }}</code></li>
+      <li>Python: <code>{{ python_version }}</code></li>
+      <li>Django: <code>{{ django_version }}</code></li>
+      <li>DRF: <code>{{ drf_version }}</code></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Admin</h2>
+    <p>
+      Admin site: <a href="{{ admin_link }}">{{ admin_link }}</a><br/>
+      Username: <code>{{ admin_user }}</code><br/>
+      Password: <code>{{ admin_pass }}</code>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>API endpoints</h2>
+    <ul>
+      {% for href, label in api_links %}
+        <li><a href="{{ href }}">{{ href }}</a> — {{ label }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>How to run</h2>
+    <ol>
+      {% for step in how_to_run %}
+        <li><code>{{ step }}</code></li>
+      {% endfor %}
+    </ol>
+  </div>
+</body>
+</html>

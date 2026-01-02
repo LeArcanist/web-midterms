@@ -4,17 +4,14 @@ from rest_framework.views import APIView
 from .models import Accident
 from .serializers import AccidentSerializer
 
-# 1) CRUD list + POST
 class AccidentListCreate(generics.ListCreateAPIView):
     queryset = Accident.objects.all().order_by("-crash_date")
     serializer_class = AccidentSerializer
 
-# 2) CRUD detail (GET/PUT/PATCH/DELETE)
 class AccidentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Accident.objects.all()
     serializer_class = AccidentSerializer
 
-# 3) Alcohol + weekend filter (example "interesting")
 class AlcoholWeekendAccidents(APIView):
     def get(self, request):
         qs = Accident.objects.filter(
@@ -23,7 +20,6 @@ class AlcoholWeekendAccidents(APIView):
         ).order_by("-crash_date")
         return Response(AccidentSerializer(qs, many=True).data)
 
-# 4) Severe accidents
 class SevereAccidents(APIView):
     def get(self, request):
         qs = Accident.objects.filter(
@@ -31,7 +27,6 @@ class SevereAccidents(APIView):
         ).order_by("-crash_date")
         return Response(AccidentSerializer(qs, many=True).data)
 
-# 5) Intersection + multi-vehicle
 class IntersectionMultiVehicle(APIView):
     def get(self, request):
         qs = Accident.objects.filter(
@@ -40,10 +35,8 @@ class IntersectionMultiVehicle(APIView):
         ).order_by("-crash_date")
         return Response(AccidentSerializer(qs, many=True).data)
 
-# 6) Aggregate endpoint (counts by weather)
 class AccidentCountsByWeather(APIView):
     def get(self, request):
-        # returns [{"weather_condition": "...", "count": N}, ...]
         from django.db.models import Count
         rows = (Accident.objects
                 .values("weather_condition")
