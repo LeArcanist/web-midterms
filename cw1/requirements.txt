@@ -1,0 +1,5 @@
+1. create venv
+2. pip install django djangorestframework
+3. pip install psycopg2-binary 
+4. pip install dj-database-url
+5. python manage.py load_accidents --path traffic_accidents_10k.csv
