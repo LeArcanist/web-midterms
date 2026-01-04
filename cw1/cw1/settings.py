@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-*&#agz2$=b=u#65qe53_b%@d$)g#mr5!8((7$c%!hf7*@3)0a&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".onrender.com"]
+ALLOWED_HOSTS = [".onrender.com", '127.0.0.1']
 
 
 # Application definition
@@ -117,7 +117,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 # for displaying 25 items at once so app doesnt crash
